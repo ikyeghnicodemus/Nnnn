@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AS FINANCE — Banking for Everyone | Abubakar Salihu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#F5C842;--gold-d:#D4A017;--gold-l:#FFF8D6;--gold-xl:#FFFDF0;
+  --night:#0D1640;--night-d:#04091E;--night-m:#1E2D6B;
+  --jade:#2EBF82;--jade-d:#0D6642;--jade-l:#EAFAF3;
+  --ivory:#FFFDF7;--cream:#FAF7EE;--parch:#F2ECD8;--latte:#E5D9BC;
+  --mocha:#9B8A6A;--ink:#1A1208;--espresso:#3D2E18;--coral:#F5916A;
+  --gg:linear-gradient(135deg,#FFE066,#F5C842 45%,#D4A017);
+  --gn:linear-gradient(160deg,#04091E,#0D1640 45%,#1E2D6B);
+  --ge:linear-gradient(135deg,#2EBF82,#0D6642);
+  --gh:linear-gradient(150deg,#04091E,#0D1640 40%,#162050 70%,#0D3028);
+  --sg:0 6px 28px rgba(212,160,23,.38);
+  --sm:0 6px 28px rgba(26,18,8,.10);--sl:0 16px 56px rgba(26,18,8,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font-family:'Outfit',sans-serif;cursor:pointer}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
+
+/* ANNOUNCE */
+.ann{background:var(--gg);padding:.5rem 1rem;text-align:center;font-size:.82rem;font-weight:600;color:var(--espresso)}
+.ann a{text-decoration:underline;color:var(--night);margin-left:.5rem;font-weight:700;cursor:pointer}
+
+/* NAV */
+.nav-bar{position:sticky;top:0;z-index:500;background:rgba(255,253,247,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,160,23,.14);transition:box-shadow .3s}
+.nav-bar.up{box-shadow:0 4px 30px rgba(26,18,8,.1);background:rgba(255,253,247,.99)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1.5rem}
+.logo{display:flex;align-items:center;gap:.65rem;flex-shrink:0}
+.logo-gem{width:40px;height:40px;border-radius:11px;background:var(--gg);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--espresso);box-shadow:var(--sg);flex-shrink:0}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1.1}
+.logo-sub{font-size:.57rem;color:var(--mocha);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:.2rem;list-style:none;flex:1;justify-content:center}
+.nav-links a{display:block;padding:.48rem .85rem;font-size:.87rem;font-weight:600;color:var(--mocha);border-radius:8px;transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.act{color:var(--ink);background:var(--cream)}
+.nav-btns{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+.btn-ghost{padding:.52rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:700;color:var(--ink);background:none;border:1.5px solid rgba(26,18,8,.12);transition:all .2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-d)}
+.btn-gold{padding:.52rem 1.3rem;border-radius:50px;font-size:.85rem;font-weight:700;color:var(--espresso);background:var(--gg);border:none;box-shadow:var(--sg);transition:all .25s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,160,23,.45)}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px}
+.hbg span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--night-d);flex-direction:column;padding:2rem;overflow-y:auto}
+.mob-menu.open{display:flex}
+.mob-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem}
+.mob-x{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);border:none;color:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mob-links{list-style:none;display:flex;flex-direction:column;gap:.25rem;flex:1}
+.mob-links a{display:block;padding:1rem 1.2rem;font-size:1rem;font-weight:700;color:rgba(255,255,255,.7);border-radius:14px;transition:all .2s}
+.mob-links a:hover{background:rgba(255,255,255,.06);color:var(--gold)}
+.mob-foot{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
+.mob-btn{width:100%;padding:.9rem;border-radius:14px;font-size:.95rem;font-weight:700;border:none;cursor:pointer;font-family:'Outfit',sans-serif}
+
+/* HERO */
+.hero{background:var(--gh);position:relative;overflow:hidden;padding:6rem 0 0;min-height:92vh;display:flex;align-items:center}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,224,102,.08) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.orb{position:absolute;border-radius:50%;pointer-events:none}
+.o1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(245,200,66,.14),transparent 65%);animation:oF1 12s ease-in-out infinite}
+.o2{width:400px;height:400px;bottom:0;left:-80px;background:radial-gradient(circle,rgba(46,191,130,.1),transparent 65%);animation:oF2 15s ease-in-out infinite}
+@keyframes oF1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+@keyframes oF2{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-25px)}}
+.hero-g{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding-bottom:5rem}
+.h-pill{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,224,102,.1);border:1px solid rgba(245,200,66,.25);border-radius:50px;padding:.4rem 1rem;font-size:.78rem;font-weight:700;color:#FFE066;margin-bottom:1.8rem;letter-spacing:.04em}
+.h-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:700;line-height:1.04;letter-spacing:-.02em;color:#fff;margin-bottom:1.4rem}
+.hero h1 .ac{background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 em{font-style:italic;color:#FFE099;-webkit-text-fill-color:#FFE099}
+.h-desc{font-size:1.08rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:480px;margin-bottom:2.2rem}
+.h-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-hg{display:inline-flex;align-items:center;gap:.55rem;background:var(--gg);color:var(--espresso);font-weight:700;padding:.9rem 2rem;border-radius:50px;font-size:.96rem;border:none;box-shadow:var(--sg);transition:all .28s;cursor:pointer;font-family:'Outfit',sans-serif}
+.btn-hg:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,160,23,.5)}
+.btn-ho{display:inline-flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.08);color:rgba(255,255,255,.9);font-weight:600;padding:.9rem 2rem;border-radius:50px;font-size:.96rem;border:1px solid rgba(255,255,255,.18);transition:all .25s;cursor:pointer;font-family:'Outfit',sans-serif}
+.btn-ho:hover{background:rgba(255,255,255,.14)}
+.h-trust{display:flex;align-items:center;gap:1.4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.avs{display:flex}
+.av{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.15);margin-right:-10px;font-family:'Cormorant Garamond',serif;font-size:.8rem;font-weight:700;color:white;display:flex;align-items:center;justify-content:center}
+.h-sep{width:1px;height:24px;background:rgba(255,255,255,.12)}
+.h-sv{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--gold);line-height:1}
+.h-sl{font-size:.68rem;color:rgba(255,255,255,.45);font-weight:500;margin-top:2px}
+
+/* PHONE */
+.hero-vis{display:flex;justify-content:center;align-items:center;position:relative}
+.ph-fl{animation:phF 5s ease-in-out infinite;position:relative;z-index:2}
+@keyframes phF{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-22px) rotate(-1.5deg)}}
+.ph-sh{width:290px;background:linear-gradient(145deg,#111827,#1F2937);border-radius:48px;padding:14px;box-shadow:0 60px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06)}
+.ph-sc{background:var(--cream);border-radius:36px;overflow:hidden;min-height:540px}
+.ph-st{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem 0;font-size:.62rem;color:rgba(255,255,255,.7);background:#0D1640}
+.ph-no{width:70px;height:6px;background:#000;border-radius:3px}
+.ph-hd{background:var(--gn);padding:1.1rem 1.3rem 1.8rem;position:relative;overflow:hidden}
+.ph-hd::before{content:'';position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(245,200,66,.1)}
+.ph-gr{font-size:.65rem;color:rgba(255,255,255,.6);margin-bottom:2px}
+.ph-us{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:1rem}
+.ph-bl{font-size:.6rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
+.ph-ba{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;color:#fff;letter-spacing:-1px;line-height:1}
+.ph-ba sup{font-size:1.1rem;vertical-align:super}
+.ph-ch{display:inline-flex;align-items:center;background:rgba(46,191,130,.2);color:#A8EDD1;border-radius:50px;padding:.2rem .6rem;font-size:.65rem;font-weight:700;margin-top:.5rem}
+.ph-bd{padding:1rem}
+.ph-ac{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem}
+.ph-ai{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.ph-ic{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.ph-al{font-size:.56rem;font-weight:600;color:var(--mocha);text-align:center}
+.ph-sx{font-size:.68rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.ph-tx{display:flex;justify-content:space-between;align-items:center;padding:.48rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.ph-tx:last-child{border:none}
+.ph-tl{display:flex;align-items:center;gap:.5rem}
+.ph-ti{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.ph-tn{font-size:.66rem;font-weight:600;color:var(--ink)}
+.ph-td{font-size:.56rem;color:var(--mocha)}
+.ph-ta{font-size:.7rem;font-weight:700}
+.pos{color:var(--jade-d)}.neg{color:var(--coral)}
+.fc{position:absolute;background:rgba(255,255,255,.97);border-radius:18px;padding:.9rem 1.1rem;box-shadow:0 20px 50px rgba(0,0,0,.2);min-width:148px}
+.fca{left:-88px;top:25%;animation:fF1 6s ease-in-out infinite}
+.fcb{right:-72px;bottom:28%;animation:fF2 7s ease-in-out infinite}
+@keyframes fF1{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(-3deg)}}
+@keyframes fF2{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.fc-l{font-size:.6rem;font-weight:700;color:var(--mocha);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.fc-v{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1}
+.fc-b{display:inline-block;margin-top:.3rem;font-size:.62rem;font-weight:700;padding:.15rem .55rem;border-radius:50px}
+.bg-e{background:var(--jade-l);color:var(--jade-d)}
+.bg-g{background:var(--gold-l);color:var(--gold-d)}
+.h-wave{position:absolute;bottom:0;left:0;right:0;z-index:1}
+
+/* TICKER */
+.tick{background:var(--cream);border-top:1px solid var(--parch);border-bottom:1px solid var(--parch);padding:1.2rem 0;overflow:hidden}
+.tick-lbl{text-align:center;font-size:.72rem;font-weight:700;color:var(--mocha);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+.tick-tr{display:flex;gap:4rem;animation:tick 25s linear infinite;width:max-content}
+.tick-it{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--latte);white-space:nowrap}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* STATS */
+.stats{background:var(--gn);position:relative;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(245,200,66,.1),transparent 55%),radial-gradient(ellipse at 70% 50%,rgba(46,191,130,.07),transparent 55%);pointer-events:none}
+.stats-g{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.st-bl{padding:3.5rem 2rem;border-right:1px solid rgba(255,255,255,.06);text-align:center;transition:background .3s}
+.st-bl:last-child{border:none}
+.st-bl:hover{background:rgba(255,255,255,.03)}
+.st-n{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;line-height:1;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.st-l{font-size:.85rem;color:rgba(255,255,255,.5);font-weight:500;line-height:1.4}
+
+/* SECTIONS */
+.sec{padding:7rem 0}
+.sec-sm{padding:5rem 0}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem}
+.ey-g{background:var(--gold-l);color:var(--gold-d)}
+.ey-j{background:var(--jade-l);color:var(--jade-d)}
+.ey-n{background:rgba(255,224,102,.12);color:#FFE066}
+.s-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem}
+.s-hl{color:#fff}
+.s-d{font-size:1rem;line-height:1.75;color:var(--mocha);max-width:540px}
+.s-dl{color:rgba(255,255,255,.6)}
+.ctr{text-align:center;margin-left:auto;margin-right:auto}
+
+/* FEATURES */
+.ft-in{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem}
+.ft-im{background:linear-gradient(145deg,var(--gold-l),var(--cream));border-radius:28px;height:320px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid rgba(212,160,23,.15);box-shadow:var(--sm);position:relative;overflow:hidden}
+.ft-im::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(245,200,66,.2),transparent 60%)}
+.ft-gr{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.fc-card{border-radius:24px;padding:2.2rem;border:1px solid transparent;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:default}
+.fc-card:hover{transform:translateY(-8px)}
+.fcc-go{background:linear-gradient(145deg,var(--gold-xl),var(--gold-l));border-color:rgba(212,160,23,.2)}.fcc-go:hover{box-shadow:0 16px 48px rgba(212,160,23,.2)}
+.fcc-dk{background:var(--gn);border-color:rgba(255,255,255,.08);box-shadow:var(--sl)}.fcc-dk:hover{box-shadow:0 24px 64px rgba(4,9,30,.5)}
+.fcc-jd{background:linear-gradient(145deg,var(--jade-l),#d0f7e8);border-color:rgba(46,191,130,.15)}.fcc-jd:hover{box-shadow:0 16px 48px rgba(46,191,130,.18)}
+.fcc-iv{background:var(--ivory);border-color:var(--parch);box-shadow:0 2px 12px rgba(26,18,8,.08)}.fcc-iv:hover{box-shadow:var(--sm)}
+.fcc-wm{background:linear-gradient(145deg,#FFF2ED,#FFE0D0);border-color:rgba(245,145,106,.15)}.fcc-wm:hover{box-shadow:0 16px 48px rgba(245,145,106,.15)}
+.fcc-cr{background:linear-gradient(145deg,var(--cream),var(--parch));border-color:var(--latte);box-shadow:0 2px 12px rgba(26,18,8,.08)}.fcc-cr:hover{box-shadow:var(--sm)}
+.fc-ico{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem;background:rgba(255,255,255,.4)}
+.fcc-dk .fc-ico{background:rgba(255,255,255,.08)}
+.fc-t{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:700;color:var(--ink);margin-bottom:.6rem}
+.fcc-dk .fc-t{color:#fff}
+.fc-d{font-size:.875rem;line-height:1.7;color:var(--mocha)}
+.fcc-dk .fc-d{color:rgba(255,255,255,.55)}
+
+/* HOW IT WORKS */
+.how-sec{background:var(--gn);position:relative;overflow:hidden}
+.how-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,224,102,.05) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+.how-g{display:grid;grid-template-columns:.9fr 1.1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+.how-steps{margin-top:3rem}
+.how-st{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);transition:all .3s}
+.how-st:last-child{border:none}
+.how-st:hover{padding-left:.5rem}
+.st-no{width:44px;height:44px;border-radius:12px;background:rgba(255,224,102,.1);border:1px solid rgba(245,200,66,.2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--gold);flex-shrink:0;transition:background .3s}
+.how-st:hover .st-no{background:rgba(255,224,102,.18)}
+.st-tt{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.35rem}
+.st-dd{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.65}
+.how-vis{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:2rem}
+.ussd{background:#000;border-radius:16px;padding:1.5rem;font-family:monospace;margin-bottom:1.5rem}
+.ul{font-size:.8rem;margin-bottom:.4rem}
+.uy{color:#FFE066}.ug{color:#2EBF82}
+.uc{animation:blink 1s step-end infinite;color:#FFE066}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hf{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);margin-bottom:.6rem;transition:background .2s}
+.hf:hover{background:rgba(255,255,255,.08)}
+.hf-ck{margin-left:auto;color:var(--jade);font-weight:700;font-size:.8rem}
+
+/* TESTIMONIALS */
+.ts-sec{background:var(--cream)}
+.ts-gr{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.5rem}
+.ts-cd{background:white;border-radius:24px;padding:2rem;border:1px solid var(--parch);box-shadow:0 2px 12px rgba(26,18,8,.08);position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:default}
+.ts-cd:hover{transform:translateY(-6px);box-shadow:var(--sl)}
+.ts-cd::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:24px 24px 0 0}
+.tc1::before{background:var(--gg)}.tc2::before{background:var(--ge)}.tc3::before{background:linear-gradient(90deg,#7B8CF8,#3A4BD4)}
+.ts-st{color:var(--gold);font-size:.85rem;margin-bottom:1rem}
+.ts-qm{font-family:'Cormorant Garamond',serif;font-size:4.5rem;line-height:.7;margin-bottom:.8rem;display:block}
+.tc1 .ts-qm{color:#FFE066}.tc2 .ts-qm{color:var(--jade)}.tc3 .ts-qm{color:#C4CAFF}
+.ts-tx{font-size:.9rem;line-height:1.75;color:var(--mocha);margin-bottom:1.5rem}
+.ts-au{display:flex;align-items:center;gap:.85rem}
+.ts-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:white;flex-shrink:0}
+.ta1{background:var(--gg)}.ta2{background:var(--ge)}.ta3{background:linear-gradient(135deg,#7B8CF8,#3A4BD4)}
+.ts-nm{font-size:.88rem;font-weight:700;color:var(--ink)}
+.ts-rl{font-size:.74rem;color:var(--mocha);margin-top:1px}
+
+/* LOAN CALC */
+.calc-sec{background:var(--ivory)}
+.calc-g{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start;margin-top:3rem}
+.calc-box{background:white;border-radius:28px;padding:2.5rem;border:1px solid var(--parch);box-shadow:var(--sm)}
+.calc-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1.5rem}
+.cf{margin-bottom:1.4rem}
+.cf label{display:block;font-size:.78rem;font-weight:700;color:var(--mocha);margin-bottom:.5rem;letter-spacing:.04em;text-transform:uppercase}
+.c-slider{width:100%;-webkit-appearance:none;height:8px;border-radius:50px;background:var(--parch);outline:none;margin-top:.4rem}
+.c-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:var(--sg);transition:transform .2s}
+.c-slider::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.c-sel{width:100%;border:1.5px solid var(--parch);border-radius:12px;padding:.8rem 1.1rem;font-family:'Outfit',sans-serif;font-size:.95rem;color:var(--ink);background:var(--cream);outline:none;cursor:pointer;font-weight:600;transition:border-color .2s}
+.c-sel:focus{border-color:var(--gold)}
+.c-res{background:var(--gn);border-radius:20px;padding:1.8rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.c-res::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.12),transparent 65%)}
+.c-rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;position:relative;z-index:1}
+.cr-v{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#FFE066;line-height:1}
+.cr-l{font-size:.68rem;color:rgba(255,255,255,.5);margin-top:3px}
+.c-apply{width:100%;background:var(--gg);color:var(--espresso);font-weight:700;font-size:.96rem;padding:.9rem;border-radius:14px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;box-shadow:var(--sg);transition:all .25s}
+.c-apply:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,160,23,.45)}
+.lt-cards{display:flex;flex-direction:column;gap:1rem}
+.lt-cd{background:white;border-radius:18px;padding:1.4rem;border:2px solid var(--parch);cursor:pointer;transition:all .25s}
+.lt-cd:hover,.lt-cd.act{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,200,66,.15)}
+.lt-tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.lt-nm{font-size:.92rem;font-weight:700;color:var(--ink)}
+.lt-rt{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--night)}
+.lt-ds{font-size:.78rem;color:var(--mocha);line-height:1.5}
+.lt-lm{display:inline-block;margin-top:.5rem;font-size:.72rem;font-weight:700;background:var(--gold-l);color:var(--gold-d);padding:.2rem .6rem;border-radius:50px}
+
+/* IMPACT */
+.imp-sec{background:var(--cream)}
+.imp-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.imp-vis{background:white;border-radius:28px;padding:2rem;box-shadow:var(--sm);border:1px solid var(--parch)}
+.iv-t{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:1.5rem}
+.iv-b{margin-bottom:1.2rem}
+.iv-m{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.4rem}
+.iv-ml{color:var(--mocha);font-weight:500}.iv-mv{color:var(--ink);font-weight:700}
+.iv-tr{height:9px;background:var(--parch);border-radius:50px;overflow:hidden}
+.iv-f{height:100%;border-radius:50px;width:0;transition:width 1.3s cubic-bezier(.25,.46,.45,.94)}
+.fg{background:var(--gg)}.fe{background:var(--ge)}.fn{background:linear-gradient(90deg,#7B8CF8,#3A4BD4)}.fc2{background:linear-gradient(90deg,var(--coral),#D4572A)}
+.iv-bot{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid var(--parch)}
+.iv-sv{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--ink)}
+.iv-sl{font-size:.73rem;color:var(--mocha);font-weight:500;margin-top:2px}
+.imp-pts{display:flex;flex-direction:column;gap:2rem}
+.imp-pt{display:flex;gap:1.2rem}
+.ip-ic{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.ip-t{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.ip-d{font-size:.86rem;color:var(--mocha);line-height:1.65}
+
+/* PRICING */
+.pr-sec{background:var(--ivory)}
+.pr-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.5rem;align-items:start}
+.pr-cd{background:white;border-radius:28px;padding:2.2rem;border:1px solid var(--parch);box-shadow:0 2px 12px rgba(26,18,8,.08);transition:transform .3s,box-shadow .3s}
+.pr-cd:hover{transform:translateY(-5px);box-shadow:var(--sl)}
+.pr-cd.ft{background:var(--gn);border-color:rgba(245,200,66,.25);box-shadow:0 32px 80px rgba(26,18,8,.18);transform:scale(1.04)}
+.pr-cd.ft:hover{transform:scale(1.04) translateY(-5px)}
+.pr-bg{display:inline-block;font-size:.68rem;font-weight:700;padding:.25rem .75rem;border-radius:50px;margin-bottom:1.2rem}
+.pb-fr{background:var(--jade-l);color:var(--jade-d)}.pb-go{background:rgba(255,224,102,.15);color:#FFE066}.pb-bz{background:#F0F2FF;color:#3A4BD4}
+.pr-n{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.pr-cd.ft .pr-n{color:#fff}
+.pr-a{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:.2rem}
+.pr-cd.ft .pr-a{background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pr-p{font-size:.8rem;color:var(--mocha);margin-bottom:1.5rem}
+.pr-cd.ft .pr-p{color:rgba(255,255,255,.5)}
+.pr-desc{font-size:.84rem;color:var(--mocha);line-height:1.6;margin-bottom:1.8rem}
+.pr-cd.ft .pr-desc{color:rgba(255,255,255,.55)}
+.pr-div{height:1px;background:var(--parch);margin-bottom:1.5rem}
+.pr-cd.ft .pr-div{background:rgba(255,255,255,.08)}
+.pr-fs{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+.pr-fi{display:flex;align-items:center;gap:.7rem;font-size:.84rem;color:var(--mocha)}
+.pr-cd.ft .pr-fi{color:rgba(255,255,255,.7)}
+.pr-ck{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0}
+.pk-y{background:var(--jade-l);color:var(--jade-d)}.pk-f{background:rgba(255,224,102,.15);color:#FFE066}.pk-n{background:var(--parch);color:var(--latte)}
+.pr-btn{width:100%;padding:.85rem;border-radius:14px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all .25s;font-family:'Outfit',sans-serif}
+.pb-out{background:none;border:1.5px solid var(--parch);color:var(--ink)}.pb-out:hover{border-color:var(--gold);color:var(--gold-d)}
+.pb-gf{background:var(--gg);color:var(--espresso);box-shadow:var(--sg)}.pb-gf:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(212,160,23,.45)}
+.pb-dk{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:white}.pb-dk:hover{background:rgba(255,255,255,.14)}
+
+/* CONTACT */
+.ct-sec{background:var(--cream)}
+.ct-g{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+.ct-box{background:white;border-radius:28px;padding:2.5rem;box-shadow:var(--sm);border:1px solid var(--parch)}
+.ct-ttl{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1.5rem}
+.ff{margin-bottom:1.2rem}
+.ff label{display:block;font-size:.78rem;font-weight:700;color:var(--mocha);margin-bottom:.45rem;letter-spacing:.04em;text-transform:uppercase}
+.fi,.fa,.fsel{width:100%;border:1.5px solid var(--parch);border-radius:12px;padding:.78rem 1rem;font-family:'Outfit',sans-serif;font-size:.92rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s;font-weight:500}
+.fi:focus,.fa:focus,.fsel:focus{border-color:var(--gold);background:white;box-shadow:0 0 0 3px rgba(245,200,66,.18)}
+.fa{resize:vertical;min-height:120px;line-height:1.6}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sub-btn{width:100%;background:var(--gg);color:var(--espresso);font-weight:700;font-size:.96rem;padding:.9rem;border-radius:14px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;box-shadow:var(--sg);transition:all .25s;margin-top:.5rem}
+.sub-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,160,23,.45)}
+.sub-btn:disabled{opacity:.6;transform:none;cursor:not-allowed}
+.ct-ok{display:none;text-align:center;padding:2rem 1rem}
+.ct-ok.show{display:block}
+.ct-ok-ic{font-size:3rem;margin-bottom:1rem}
+.ct-ok-t{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.ct-ok-d{font-size:.9rem;color:var(--mocha);line-height:1.6;margin-bottom:1.5rem}
+.ct-info{display:flex;flex-direction:column;gap:1.1rem}
+.ci-bl{background:white;border-radius:18px;padding:1.4rem;border:1px solid var(--parch);box-shadow:0 1px 4px rgba(26,18,8,.06);display:flex;align-items:flex-start;gap:1rem;transition:transform .25s,box-shadow .25s}
+.ci-bl:hover{transform:translateY(-3px);box-shadow:var(--sm)}
+.ci-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ci-tt{font-size:.75rem;font-weight:700;color:var(--mocha);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.ci-vl{font-size:.92rem;font-weight:600;color:var(--ink)}
+.ci-vl a{color:var(--night);transition:color .2s}
+.ci-vl a:hover{color:var(--gold-d)}
+.ci-sb{font-size:.78rem;color:var(--mocha);font-weight:400;margin-top:2px}
+
+/* CTA */
+.cta-sec{background:var(--gn);position:relative;overflow:hidden;text-align:center}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(245,200,66,.12),transparent 45%),radial-gradient(ellipse at 80% 50%,rgba(46,191,130,.08),transparent 45%);pointer-events:none}
+.cta-in{position:relative;z-index:1}
+.cta-f{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--gold);margin-bottom:.5rem}
+.cta-acts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-wh{background:white;color:var(--ink);font-weight:700;padding:.9rem 2.2rem;border-radius:50px;border:none;font-size:.95rem;box-shadow:0 6px 24px rgba(0,0,0,.2);transition:all .25s;cursor:pointer;font-family:'Outfit',sans-serif}
+.btn-wh:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.3)}
+.btn-wr{background:transparent;color:rgba(255,255,255,.85);font-weight:600;padding:.9rem 2.2rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.25);font-size:.95rem;transition:all .25s;cursor:pointer;font-family:'Outfit',sans-serif}
+.btn-wr:hover{border-color:white;color:white}
+.tr-pills{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.tr-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.6)}
+
+/* FOOTER */
+footer{background:var(--night-d);padding:5rem 0 2rem;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.04),transparent 65%);pointer-events:none}
+.ft-tp{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem}
+.ft-lg{display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem}
+.fl-mk{width:38px;height:38px;border-radius:10px;background:var(--gg);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--espresso)}
+.fl-nm{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:white}
+.ft-desc{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:280px;margin-bottom:1.5rem}
+.ft-soc{display:flex;gap:.6rem}
+.soc-btn{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;text-decoration:none}
+.soc-btn:hover{background:rgba(255,255,255,.12);color:var(--gold)}
+.ft-cl-t{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.ft-cl ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.ft-cl ul li a{font-size:.85rem;color:rgba(255,255,255,.4);transition:color .2s;font-weight:500}
+.ft-cl ul li a:hover{color:var(--gold)}
+.ft-bt{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap;gap:1rem}
+.ft-cp{font-size:.8rem;color:rgba(255,255,255,.3);font-weight:500}
+.ft-cp strong{color:rgba(255,255,255,.5)}
+.ft-lg-l{display:flex;gap:1.5rem}
+.ft-lg-l a{font-size:.78rem;color:rgba(255,255,255,.3);transition:color .2s}
+.ft-lg-l a:hover{color:rgba(255,255,255,.6)}
+.ft-co{display:flex;gap:.7rem}
+.cb{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.25rem .6rem;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.3)}
+
+/* MODAL */
+.mo{position:fixed;inset:0;z-index:1000;background:rgba(4,9,30,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.mo.open{opacity:1;pointer-events:all}
+.mo-box{background:white;border-radius:28px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,.45);transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.34,1.56,.64,1);scrollbar-width:none}
+.mo.open .mo-box{transform:translateY(0) scale(1)}
+.mo-box::-webkit-scrollbar{display:none}
+.mo-hd{padding:2rem 2rem 1rem;border-bottom:1px solid var(--parch);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:white;z-index:1;border-radius:28px 28px 0 0}
+.mo-t{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink)}
+.mo-x{width:36px;height:36px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--mocha);transition:all .2s;flex-shrink:0}
+.mo-x:hover{background:var(--parch);color:var(--ink)}
+.mo-bd{padding:1.5rem 2rem 2rem}
+.mo-tabs{display:flex;gap:.4rem;background:var(--cream);border-radius:12px;padding:4px;margin-bottom:1.5rem}
+.mo-tab{flex:1;padding:.55rem;border-radius:9px;font-size:.82rem;font-weight:700;cursor:pointer;text-align:center;background:none;border:none;color:var(--mocha);transition:all .2s;font-family:'Outfit',sans-serif}
+.mo-tab.on{background:white;color:var(--ink);box-shadow:0 1px 4px rgba(26,18,8,.06)}
+.mo-pn{display:none}.mo-pn.on{display:block}
+.mf{margin-bottom:1.1rem}
+.mf label{display:block;font-size:.74rem;font-weight:700;color:var(--mocha);margin-bottom:.45rem;letter-spacing:.04em;text-transform:uppercase}
+.mf-r{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.mi,.msel{width:100%;border:1.5px solid var(--parch);border-radius:12px;padding:.75rem 1rem;font-family:'Outfit',sans-serif;font-size:.92rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s;font-weight:500}
+.mi:focus,.msel:focus{border-color:var(--gold);background:white;box-shadow:0 0 0 3px rgba(245,200,66,.18)}
+.mf-ic{position:relative}
+.mf-ic span{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);pointer-events:none}
+.mf-ic .mi{padding-left:2.5rem}
+.mf-note{font-size:.74rem;color:var(--mocha);background:var(--gold-xl);border-radius:10px;padding:.6rem .9rem;border-left:3px solid var(--gold);margin-bottom:1rem;line-height:1.5}
+.m-sub{width:100%;background:var(--gg);color:var(--espresso);font-weight:700;font-size:.95rem;padding:.9rem;border-radius:14px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;box-shadow:var(--sg);transition:all .25s;margin-top:.5rem}
+.m-sub:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,160,23,.45)}
+.m-sub:disabled{opacity:.6;transform:none;cursor:not-allowed}
+.pw-w{position:relative}
+.pw-w .mi{padding-right:3rem}
+.pw-e{position:absolute;right:.9rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1rem;color:var(--mocha);padding:.2rem}
+.sb-bar{height:4px;border-radius:2px;background:var(--parch);margin-top:.4rem;overflow:hidden}
+.sb-f{height:100%;border-radius:2px;transition:width .4s,background .4s}
+.sb-l{font-size:.68rem;color:var(--mocha);margin-top:.3rem;font-weight:600}
+.m-lnk{font-size:.82rem;color:var(--mocha);text-align:center;margin-top:1rem}
+.m-lnk a{color:var(--night);font-weight:700;cursor:pointer;text-decoration:underline}
+.m-div{display:flex;align-items:center;gap:.8rem;margin:1.2rem 0}
+.m-div::before,.m-div::after{content:'';flex:1;height:1px;background:var(--parch)}
+.m-div span{font-size:.75rem;color:var(--latte);font-weight:600;white-space:nowrap}
+.m-succ{display:none;text-align:center;padding:1rem 0}
+.m-succ.show{display:block}
+.ms-ic{font-size:3.5rem;margin-bottom:1rem}
+.ms-t{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.ms-d{font-size:.9rem;color:var(--mocha);line-height:1.6;margin-bottom:1.5rem}
+.ms-bg{display:inline-flex;align-items:center;gap:.5rem;background:var(--jade-l);color:var(--jade-d);border-radius:50px;padding:.5rem 1.2rem;font-size:.82rem;font-weight:700}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:9999;background:var(--ink);color:white;padding:.85rem 1.4rem;border-radius:14px;font-size:.85rem;font-weight:600;box-shadow:var(--sl),0 0 0 1px rgba(245,200,66,.2);border-left:3px solid var(--gold);transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);pointer-events:none;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-g,.ft-in,.how-g,.imp-g,.ct-g{grid-template-columns:1fr}
+  .hero-g{text-align:center}
+  .h-desc,.h-cta{margin-left:auto;margin-right:auto}
+  .h-cta{justify-content:center}
+  .h-trust{justify-content:center}
+  .hero-vis,.ft-im{display:none}
+  .stats-g{grid-template-columns:repeat(2,1fr)}
+  .st-bl:nth-child(2){border-right:none}
+  .st-bl:nth-child(3){border-top:1px solid rgba(255,255,255,.06)}
+  .ts-gr,.pr-g{grid-template-columns:1fr}
+  .pr-cd.ft{transform:none}
+  .ft-tp{grid-template-columns:1fr 1fr;gap:2rem}
+  .calc-g{grid-template-columns:1fr}
+  .fr{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-btns{display:none}
+  .hbg{display:flex}
+  .ft-gr{grid-template-columns:1fr}
+  .ft-tp{grid-template-columns:1fr}
+  .ft-bt{flex-direction:column;text-align:center}
+  .hero{padding:4rem 0 0}
+  .mf-r{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="ann">🎉 AS Finance now live in 47 countries — Open your free account today <a onclick="openMo('signup')">Get Started →</a></div>
+
+<!-- NAV -->
+<div class="nav-bar" id="nb">
+  <nav class="wrap nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-gem">AS</div>
+      <div><div class="logo-name">AS FINANCE</div><div class="logo-sub">by Abubakar Salihu</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#testimonials">Stories</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-btns">
+      <button class="btn-ghost" onclick="openMo('login')">Log in</button>
+      <button class="btn-gold" onclick="openMo('signup')">Open Free Account</button>
+    </div>
+    <button class="hbg" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </nav>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob">
+  <div class="mob-head">
+    <a href="#home" class="logo" onclick="closeMob()">
+      <div class="logo-gem">AS</div>
+      <div class="logo-name" style="color:white;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700">AS FINANCE</div>
+    </a>
+    <button class="mob-x" onclick="closeMob()">✕</button>
+  </div>
+  <ul class="mob-links">
+    <li><a href="#features" onclick="closeMob()">Features</a></li>
+    <li><a href="#how" onclick="closeMob()">How It Works</a></li>
+    <li><a href="#impact" onclick="closeMob()">Impact</a></li>
+    <li><a href="#testimonials" onclick="closeMob()">Stories</a></li>
+    <li><a href="#pricing" onclick="closeMob()">Pricing</a></li>
+    <li><a href="#contact" onclick="closeMob()">Contact</a></li>
+  </ul>
+  <div class="mob-foot">
+    <button class="mob-btn" style="background:rgba(255,255,255,.08);color:white;border:1px solid rgba(255,255,255,.15)" onclick="closeMob();openMo('login')">Log in</button>
+    <button class="mob-btn" style="background:var(--gg);color:var(--espresso)" onclick="closeMob();openMo('signup')">Open Free Account →</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="wrap hero-g">
+    <div>
+      <div class="h-pill"><span class="h-dot"></span> Financial Inclusion — 47 Countries Active</div>
+      <h1>Real banking for<br/><span class="ac">every person,</span><br/><em>everywhere.</em></h1>
+      <p class="h-desc">AS FINANCE by Abubakar Salihu brings genuine banking — savings, microloans, and cross-border payments — to the 1.4 billion people excluded from the global financial system. Zero fees. Works on any phone.</p>
+      <div class="h-cta">
+        <button class="btn-hg" onclick="openMo('signup')">Open Free Account →</button>
+        <a class="btn-ho" href="#how">▶ How It Works</a>
+      </div>
+      <div class="h-trust">
+        <div class="avs">
+          <div class="av" style="background:linear-gradient(135deg,#2EBF82,#0D6642)">A</div>
+          <div class="av" style="background:linear-gradient(135deg,#F5C842,#D4A017)">K</div>
+          <div class="av" style="background:linear-gradient(135deg,#7B8CF8,#3A4BD4)">M</div>
+          <div class="av" style="background:linear-gradient(135deg,#F5916A,#D4572A)">F</div>
+        </div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.55);font-weight:500"><strong style="color:#FFE066;font-weight:700">2.4M+ users</strong> already banking</div>
+        <div class="h-sep"></div>
+        <div><div class="h-sv">₦0</div><div class="h-sl">Min. Balance</div></div>
+        <div class="h-sep"></div>
+        <div><div class="h-sv">4 min</div><div class="h-sl">Loan Approval</div></div>
+      </div>
+    </div>
+    <div class="hero-vis">
+      <div class="fc fca">
+        <div class="fc-l">Monthly Savings</div><div class="fc-v">₦135,200</div>
+        <span class="fc-b bg-e">↑ 12% this month</span>
+      </div>
+      <div class="ph-fl">
+        <div class="ph-sh"><div class="ph-sc">
+          <div class="ph-st"><span>9:41</span><div class="ph-no"></div><span>▮▮▮</span></div>
+          <div class="ph-hd">
+            <div class="ph-gr">Good morning,</div>
+            <div class="ph-us">Abubakar 👋</div>
+            <div class="ph-bl">Total Balance</div>
+            <div class="ph-ba"><sup>₦</sup>1,996,160</div>
+            <div class="ph-ch">↑ 12.4% this month</div>
+          </div>
+          <div class="ph-bd">
+            <div class="ph-ac">
+              <div class="ph-ai"><div class="ph-ic" style="background:#FFF8E0">💸</div><div class="ph-al">Send</div></div>
+              <div class="ph-ai"><div class="ph-ic" style="background:#EAFAF3">📥</div><div class="ph-al">Receive</div></div>
+              <div class="ph-ai"><div class="ph-ic" style="background:#F0F2FF">🏦</div><div class="ph-al">Save</div></div>
+              <div class="ph-ai"><div class="ph-ic" style="background:#FFF1EB">🤝</div><div class="ph-al">Loan</div></div>
+            </div>
+            <div class="ph-sx">Recent Transactions</div>
+            <div class="ph-tx"><div class="ph-tl"><div class="ph-ti" style="background:#EAFAF3">🌾</div><div><div class="ph-tn">Market Sale</div><div class="ph-td">Today</div></div></div><div class="ph-ta pos">+₦192,000</div></div>
+            <div class="ph-tx"><div class="ph-tl"><div class="ph-ti" style="background:#FFF8E0">🏫</div><div><div class="ph-tn">School Fees</div><div class="ph-td">Yesterday</div></div></div><div class="ph-ta neg">-₦72,000</div></div>
+            <div class="ph-tx"><div class="ph-tl"><div class="ph-ti" style="background:#F0F2FF">🌍</div><div><div class="ph-tn">Transfer</div><div class="ph-td">Mar 9</div></div></div><div class="ph-ta neg">-₦128,000</div></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="fc fcb">
+        <div class="fc-l">Loan Approved</div><div class="fc-v">₦800,000</div>
+        <span class="fc-b bg-g">⚡ In 4 minutes</span>
+      </div>
+    </div>
+  </div>
+  <svg class="h-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" fill="none"><path d="M0,80 C360,20 1080,60 1440,20 L1440,80 Z" fill="#FFFDF7"/></svg>
+</section>
+
+<!-- TICKER -->
+<div class="tick">
+  <div class="tick-lbl">Trusted by partners worldwide</div>
+  <div style="overflow:hidden"><div class="tick-tr">
+    <span class="tick-it">🌍 GSMA Associate</span><span class="tick-it">🏦 Central Bank Regulated</span><span class="tick-it">🔒 ISO 27001 Certified</span><span class="tick-it">📱 MTN Mobile Money Partner</span><span class="tick-it">🌱 CGAP Financial Inclusion</span><span class="tick-it">⚡ Mastercard Send Partner</span><span class="tick-it">🤝 IFC Portfolio Company</span>
+    <span class="tick-it">🌍 GSMA Associate</span><span class="tick-it">🏦 Central Bank Regulated</span><span class="tick-it">🔒 ISO 27001 Certified</span><span class="tick-it">📱 MTN Mobile Money Partner</span><span class="tick-it">🌱 CGAP Financial Inclusion</span><span class="tick-it">⚡ Mastercard Send Partner</span><span class="tick-it">🤝 IFC Portfolio Company</span>
+  </div></div>
+</div>
+
+<!-- STATS -->
+<div class="stats sec-sm"><div class="wrap"><div class="stats-g">
+  <div class="st-bl rv"><div class="st-n">2.4M+</div><div class="st-l">Active account holders across 47 countries</div></div>
+  <div class="st-bl rv"><div class="st-n">₦1.9T</div><div class="st-l">In microloans disbursed since launch</div></div>
+  <div class="st-bl rv"><div class="st-n">68%</div><div class="st-l">Female account holders driving family growth</div></div>
+  <div class="st-bl rv"><div class="st-n">4 min</div><div class="st-l">Average microloan approval time, 24/7</div></div>
+</div></div></div>
+
+<!-- FEATURES -->
+<section class="sec" id="features" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="ft-in">
+      <div>
+        <div class="eyebrow ey-g">Built for Real Life</div>
+        <h2 class="s-h">Everything you need,<br/>nothing you don't.</h2>
+        <p class="s-d">Designed for low-bandwidth environments, feature phones, and people who've never had a bank account — AS FINANCE works wherever you are.</p>
+        <br/>
+        <button class="btn-gold" style="font-size:.9rem;padding:.7rem 1.6rem" onclick="openMo('signup')">Get Started Free →</button>
+      </div>
+      <div class="ft-im"><span style="position:relative;z-index:1;filter:drop-shadow(0 8px 20px rgba(212,160,23,.3))">🌍</span></div>
+    </div>
+    <div class="ft-gr">
+      <div class="fc-card fcc-go rv"><div class="fc-ico">📱</div><div class="fc-t">Works on Any Phone</div><div class="fc-d">USSD *234# and SMS fallback — AS FINANCE works on a ₦32,000 feature phone with zero data, even in remote villages with no internet.</div></div>
+      <div class="fc-card fcc-dk rv"><div class="fc-ico">🔐</div><div class="fc-t">Bank-Grade Security</div><div class="fc-d">256-bit encryption, biometric login, and real-time fraud detection. The same security used by the world's largest banks — now for everyone.</div></div>
+      <div class="fc-card fcc-jd rv"><div class="fc-ico">💰</div><div class="fc-t">Zero-Balance Accounts</div><div class="fc-d">Open an account with absolutely nothing. No minimum deposit, no monthly fees, no paperwork — just your phone number and 3 minutes.</div></div>
+      <div class="fc-card fcc-iv rv"><div class="fc-ico">🌱</div><div class="fc-t">Micro-Savings & Goals</div><div class="fc-d">Set daily savings goals from as little as ₦160. Smart round-up tools grow your money automatically without you thinking about it.</div></div>
+      <div class="fc-card fcc-wm rv"><div class="fc-ico">🤝</div><div class="fc-t">Microloans in Minutes</div><div class="fc-d">Get approved for small loans in under 4 minutes using alternative credit scoring — no credit history, no collateral, no guarantors required.</div></div>
+      <div class="fc-card fcc-cr rv"><div class="fc-ico">🌍</div><div class="fc-t">Cross-Border Payments</div><div class="fc-d">Send money across borders with near-zero fees and real exchange rates — no hidden markups, no intermediary banks, no delays.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec how-sec" id="how">
+  <div class="wrap">
+    <div class="how-g">
+      <div>
+        <div class="eyebrow ey-n">Simple by Design</div>
+        <h2 class="s-h s-hl">Up and running<br/>in 3 minutes.</h2>
+        <p class="s-d s-dl">No branch visits. No paperwork. No bank history needed.</p>
+        <div class="how-steps">
+          <div class="how-st rv"><div class="st-no">01</div><div><div class="st-tt">Register with your phone number</div><div class="st-dd">Dial *234# or download the app. Enter your phone number and choose a 4-digit PIN. That's your account — instantly created.</div></div></div>
+          <div class="how-st rv"><div class="st-no">02</div><div><div class="st-tt">Verify your identity in seconds</div><div class="st-dd">Quick biometric scan or national ID photo. Our AI verifies in under 30 seconds, with in-person fallback at 50,000+ agent locations.</div></div></div>
+          <div class="how-st rv"><div class="st-no">03</div><div><div class="st-tt">Add money any way you like</div><div class="st-dd">Deposit cash at local agents, receive transfers from family, or link your wages directly. Whatever works in your community.</div></div></div>
+          <div class="how-st rv"><div class="st-no">04</div><div><div class="st-tt">Save, pay, borrow, grow</div><div class="st-dd">Your complete financial life — savings goals, microloan access, cross-border transfers, and insurance — all in one place.</div></div></div>
+        </div>
+      </div>
+      <div class="how-vis rv">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:1rem">📱 USSD Access — Works Offline</div>
+        <div class="ussd">
+          <div class="ul uy">Welcome to AS FINANCE *234#</div>
+          <div class="ul ug">1. Check Balance</div>
+          <div class="ul ug">2. Send Money</div>
+          <div class="ul ug">3. Save Money</div>
+          <div class="ul ug">4. Apply for Loan</div>
+          <div class="ul ug">5. Pay Bills</div>
+          <div class="ul" style="margin-top:.6rem;color:rgba(255,255,255,.4)">Reply: <span class="uc">█</span></div>
+        </div>
+        <div class="hf"><span>📡</span><span style="font-size:.83rem;color:rgba(255,255,255,.7);font-weight:500">Works with 2G, SMS, or no data connection</span><span class="hf-ck">✓</span></div>
+        <div class="hf"><span>🌐</span><span style="font-size:.83rem;color:rgba(255,255,255,.7);font-weight:500">14 local languages including Hausa &amp; Swahili</span><span class="hf-ck">✓</span></div>
+        <div class="hf"><span>🏪</span><span style="font-size:.83rem;color:rgba(255,255,255,.7);font-weight:500">50,000+ cash-in / cash-out agent locations</span><span class="hf-ck">✓</span></div>
+        <div class="hf"><span>⚡</span><span style="font-size:.83rem;color:rgba(255,255,255,.7);font-weight:500">Instant transaction confirmations via SMS</span><span class="hf-ck">✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec ts-sec" id="testimonials">
+  <div class="wrap">
+    <div class="ctr">
+      <div class="eyebrow ey-j">Real Stories</div>
+      <h2 class="s-h ctr">Heard from our community.</h2>
+      <p class="s-d ctr">Real people. Real impact. Every account opened is a life changed.</p>
+    </div>
+    <div class="ts-gr">
+      <div class="ts-cd tc1 rv"><div class="ts-st">★★★★★</div><span class="ts-qm">"</span><div class="ts-tx">Before AS FINANCE, I kept my savings under the mattress. Now my daughter is in secondary school because I could actually plan and save for her future. This app changed everything.</div><div class="ts-au"><div class="ts-av ta1">A</div><div><div class="ts-nm">Amara Diallo</div><div class="ts-rl">Market trader, Dakar, Senegal</div></div></div></div>
+      <div class="ts-cd tc2 rv"><div class="ts-st">★★★★★</div><span class="ts-qm">"</span><div class="ts-tx">I got a ₦128,000 microloan approved in 4 minutes to buy seeds before planting season. After harvest I repaid it easily. No bank had ever spoken to me before — now I have credit history.</div><div class="ts-au"><div class="ts-av ta2">R</div><div><div class="ts-nm">Rajesh Patel</div><div class="ts-rl">Smallholder farmer, Gujarat, India</div></div></div></div>
+      <div class="ts-cd tc3 rv"><div class="ts-st">★★★★★</div><span class="ts-qm">"</span><div class="ts-tx">I send money home to Lagos every month. With AS FINANCE I save ₦28,800 per transfer in fees. That's extra food on my family's table, school supplies for my kids — real money that matters.</div><div class="ts-au"><div class="ts-av ta3">K</div><div><div class="ts-nm">Kemi Adeyemi</div><div class="ts-rl">Nurse &amp; migrant worker, London, UK</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOAN CALCULATOR -->
+<section class="sec calc-sec" id="calculator">
+  <div class="wrap">
+    <div class="ctr">
+      <div class="eyebrow ey-g">Try It Yourself</div>
+      <h2 class="s-h ctr">Calculate your microloan.</h2>
+      <p class="s-d ctr">Transparent rates, no hidden fees. See exactly what you'll pay before you apply.</p>
+    </div>
+    <div class="calc-g">
+      <div class="calc-box">
+        <div class="calc-title">⚡ Loan Calculator</div>
+        <div class="cf">
+          <label>Loan Amount — <span id="amtD">₦320,000</span></label>
+          <input type="range" class="c-slider" id="lnAmt" min="10" max="1000" value="200" oninput="calcLoan()"/>
+          <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--mocha);margin-top:.4rem"><span>₦16,000</span><span>₦1,600,000</span></div>
+        </div>
+        <div class="cf">
+          <label>Repayment Period</label>
+          <select class="c-sel" id="lnTerm" onchange="calcLoan()">
+            <option value="1">1 Month</option>
+            <option value="3" selected>3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="12">12 Months</option>
+          </select>
+        </div>
+        <div class="c-res">
+          <div class="c-rg">
+            <div><div class="cr-v" id="mpay">₦110,160</div><div class="cr-l">Monthly Payment</div></div>
+            <div><div class="cr-v" id="tpay">₦330,480</div><div class="cr-l">Total Repayment</div></div>
+            <div><div class="cr-v" id="tint">₦10,480</div><div class="cr-l">Total Interest</div></div>
+          </div>
+        </div>
+        <button class="c-apply" onclick="openMo('signup')">Apply Now — Approval in 4 Minutes ⚡</button>
+      </div>
+      <div class="lt-cards">
+        <div class="lt-cd act" onclick="pickLoan(this,8.5)"><div class="lt-tp"><div class="lt-nm">🌾 Farm Input Loan</div><div class="lt-rt">8.5% APR</div></div><div class="lt-ds">Seasonal agricultural loans disbursed at planting, repaid at harvest.</div><span class="lt-lm">Up to ₦800,000</span></div>
+        <div class="lt-cd" onclick="pickLoan(this,12)"><div class="lt-tp"><div class="lt-nm">🛒 Business Loan</div><div class="lt-rt">12% APR</div></div><div class="lt-ds">For growing your micro-business — stock, equipment, or market expansion.</div><span class="lt-lm">Up to ₦1,600,000</span></div>
+        <div class="lt-cd" onclick="pickLoan(this,6)"><div class="lt-tp"><div class="lt-nm">🚨 Emergency Loan</div><div class="lt-rt">6% APR</div></div><div class="lt-ds">Fast access for urgent needs — medical, school fees, or unexpected expenses.</div><span class="lt-lm">Up to ₦320,000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="sec imp-sec" id="impact">
+  <div class="wrap">
+    <div class="imp-g">
+      <div class="imp-vis rv" id="impV">
+        <div class="iv-t">📊 Communities We Serve</div>
+        <div class="iv-b"><div class="iv-m"><span class="iv-ml">Rural smallholder farmers</span><span class="iv-mv">38%</span></div><div class="iv-tr"><div class="iv-f fg" data-w="38"></div></div></div>
+        <div class="iv-b"><div class="iv-m"><span class="iv-ml">Informal sector workers</span><span class="iv-mv">27%</span></div><div class="iv-tr"><div class="iv-f fe" data-w="27"></div></div></div>
+        <div class="iv-b"><div class="iv-m"><span class="iv-ml">Migrant workers &amp; diaspora</span><span class="iv-mv">19%</span></div><div class="iv-tr"><div class="iv-f fn" data-w="19"></div></div></div>
+        <div class="iv-b"><div class="iv-m"><span class="iv-ml">Women-led micro-businesses</span><span class="iv-mv">16%</span></div><div class="iv-tr"><div class="iv-f fc2" data-w="16"></div></div></div>
+        <div class="iv-bot">
+          <div><div class="iv-sv">68%</div><div class="iv-sl">Female account holders</div></div>
+          <div><div class="iv-sv">₦1.9T</div><div class="iv-sl">Loans disbursed</div></div>
+          <div><div class="iv-sv">41%</div><div class="iv-sl">Higher school enrolment</div></div>
+          <div><div class="iv-sv">3×</div><div class="iv-sl">More savings vs cash</div></div>
+        </div>
+      </div>
+      <div class="imp-pts">
+        <div class="eyebrow ey-g">Our Impact</div>
+        <h2 class="s-h">Numbers that<br/>matter most.</h2>
+        <div class="imp-pt rv"><div class="ip-ic" style="background:var(--jade-l)">🌾</div><div><div class="ip-t">Fuelling local economies</div><div class="ip-d">87% of microloans are reinvested in local businesses within 30 days, creating a powerful multiplier effect in underserved communities.</div></div></div>
+        <div class="imp-pt rv"><div class="ip-ic" style="background:var(--gold-l)">👩‍👧</div><div><div class="ip-t">Empowering women</div><div class="ip-d">Women with AS FINANCE accounts save 3× more than those relying on cash alone. Financial independence transforms entire families.</div></div></div>
+        <div class="imp-pt rv"><div class="ip-ic" style="background:#F0F2FF">🎓</div><div><div class="ip-t">Education &amp; healthcare</div><div class="ip-d">Users report 41% higher school enrolment and 28% more healthcare visits after just 6 months with an AS FINANCE account.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pr-sec" id="pricing">
+  <div class="wrap">
+    <div class="ctr">
+      <div class="eyebrow ey-g">Simple Pricing</div>
+      <h2 class="s-h ctr">Free to start.<br/>Powerful to grow.</h2>
+      <p class="s-d ctr">No hidden fees. No surprises. Every plan includes zero-minimum-balance accounts and full USSD access.</p>
+    </div>
+    <div class="pr-g">
+      <div class="pr-cd rv">
+        <span class="pr-bg pb-fr">Free Forever</span>
+        <div class="pr-n">Starter</div><div class="pr-a">₦0</div>
+        <div class="pr-p">per month, always free</div>
+        <div class="pr-desc">Perfect for individuals just getting started with digital banking.</div>
+        <div class="pr-div"></div>
+        <div class="pr-fs">
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Zero-balance account</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>USSD &amp; SMS access (*234#)</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Up to ₦80,000/month transfers</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Basic savings goals (2)</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>KYC verification included</div>
+          <div class="pr-fi"><div class="pr-ck pk-n">✗</div><span style="color:var(--latte)">Microloans</span></div>
+        </div>
+        <button class="pr-btn pb-out" onclick="openMo('signup')">Get Started Free</button>
+      </div>
+      <div class="pr-cd ft rv">
+        <span class="pr-bg pb-go">⭐ Most Popular</span>
+        <div class="pr-n">Gold</div><div class="pr-a">₦4,999</div>
+        <div class="pr-p">per month — cancel anytime</div>
+        <div class="pr-desc">Full financial inclusion toolkit for growing households and micro-businesses.</div>
+        <div class="pr-div"></div>
+        <div class="pr-fs">
+          <div class="pr-fi"><div class="pr-ck pk-f">✓</div>Everything in Starter</div>
+          <div class="pr-fi"><div class="pr-ck pk-f">✓</div>Microloans up to ₦800,000</div>
+          <div class="pr-fi"><div class="pr-ck pk-f">✓</div>Unlimited cross-border transfers</div>
+          <div class="pr-fi"><div class="pr-ck pk-f">✓</div>Unlimited savings goals</div>
+          <div class="pr-fi"><div class="pr-ck pk-f">✓</div>5.2% interest on savings</div>
+          <div class="pr-fi"><div class="pr-ck pk-f">✓</div>Priority 24/7 support</div>
+        </div>
+        <button class="pr-btn pb-gf" onclick="payGold()">Start Gold — ₦4,999/mo</button>
+      </div>
+      <div class="pr-cd rv">
+        <span class="pr-bg pb-bz">For Business</span>
+        <div class="pr-n">Business</div><div class="pr-a">₦15,999</div>
+        <div class="pr-p">per month, per business</div>
+        <div class="pr-desc">For micro-enterprises, cooperatives, and NGOs managing financial inclusion at scale.</div>
+        <div class="pr-div"></div>
+        <div class="pr-fs">
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Everything in Gold</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Business loans up to ₦8,000,000</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Multi-user accounts (10 seats)</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>Bulk payment processing</div>
+          <div class="pr-fi"><div class="pr-ck pk-y">✓</div>API &amp; integration access</div>
+        </div>
+        <button class="pr-btn pb-out" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Sales</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec ct-sec" id="contact">
+  <div class="wrap">
+    <div class="ctr">
+      <div class="eyebrow ey-j">Get in Touch</div>
+      <h2 class="s-h ctr">We'd love to hear from you.</h2>
+      <p class="s-d ctr">Questions, partnerships, or press enquiries — Abubakar's team responds within 24 hours.</p>
+    </div>
+    <div class="ct-g">
+      <div class="ct-box">
+        <div id="ctForm">
+          <div class="ct-ttl">Send us a message</div>
+          <div class="fr">
+            <div class="ff"><label>First Name</label><input class="fi" id="ctFN" type="text" placeholder="Abubakar" required/></div>
+            <div class="ff"><label>Last Name</label><input class="fi" id="ctLN" type="text" placeholder="Salihu"/></div>
+          </div>
+          <div class="ff"><label>Email Address</label><input class="fi" id="ctEM" type="email" placeholder="your@email.com" required/></div>
+          <div class="ff"><label>Phone Number</label><input class="fi" id="ctPH" type="tel" placeholder="08035391435"/></div>
+          <div class="ff">
+            <label>Subject</label>
+            <select class="fsel" id="ctSJ">
+              <option value="">Select a topic...</option>
+              <option>General Enquiry</option><option>Account Support</option>
+              <option>Partnership / Investment</option><option>Press &amp; Media</option>
+              <option>Business / API Access</option><option>Report an Issue</option>
+            </select>
+          </div>
+          <div class="ff"><label>Message</label><textarea class="fa" id="ctMG" placeholder="Tell us how we can help..." required></textarea></div>
+          <button class="sub-btn" id="ctBtn" onclick="submitContact()">Send Message →</button>
+        </div>
+        <div class="ct-ok" id="ctOK">
+          <div class="ct-ok-ic">✅</div>
+          <div class="ct-ok-t">Message Sent!</div>
+          <div class="ct-ok-d">Thank you for reaching out. Abubakar's team will reply within 24 hours to <strong id="ctOKEmail"></strong></div>
+          <button class="btn-gold" onclick="resetContact()">Send Another Message</button>
+        </div>
+      </div>
+      <div class="ct-info">
+        <div class="ci-bl rv"><div class="ci-ic" style="background:var(--gold-l)">📞</div><div><div class="ci-tt">Phone / WhatsApp</div><div class="ci-vl"><a href="tel:+2348035391435">08035391435</a></div><div class="ci-sb">Call or WhatsApp anytime</div></div></div>
+        <div class="ci-bl rv"><div class="ci-ic" style="background:var(--jade-l)">✉️</div><div><div class="ci-tt">Email</div><div class="ci-vl"><a href="/cdn-cgi/l/email-protection#cebaafa2a5fcafacbbacafa5afbcbdafa2a7a6bbfff7f7fc8ea9a3afa7a2e0ada1a3"><span class="__cf_email__" data-cfemail="f286939e99c0939087909399938081939e9b9a87c3cbcbc0b2959f939b9edc919d9f">[email&#160;protected]</span></a></div><div class="ci-sb">Response within 24 hours</div></div></div>
+        <div class="ci-bl rv"><div class="ci-ic" style="background:var(--gold-l)">💬</div><div><div class="ci-tt">WhatsApp Chat</div><div class="ci-vl"><a href="https://wa.me/2348035391435" target="_blank">Chat on WhatsApp →</a></div><div class="ci-sb">Fastest response channel</div></div></div>
+        <div class="ci-bl rv"><div class="ci-ic" style="background:var(--jade-l)">📱</div><div><div class="ci-tt">USSD Banking</div><div class="ci-vl">Dial <strong>*234#</strong> on any phone</div><div class="ci-sb">Works offline in 14 local languages</div></div></div>
+        <div class="ci-bl rv"><div class="ci-ic" style="background:#F0F2FF">🌍</div><div><div class="ci-tt">Headquarters</div><div class="ci-vl">Lagos, Nigeria</div><div class="ci-sb">Operating across 47 countries</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec cta-sec">
+  <div class="wrap cta-in">
+    <div class="cta-f">A vision by Abubakar Salihu</div>
+    <h2 class="s-h ctr s-hl" style="max-width:720px;margin:0 auto 1rem">Financial freedom starts<br/>with one small step.</h2>
+    <p class="s-d ctr s-dl" style="margin-bottom:2.5rem">Open your AS FINANCE account in 3 minutes. No bank branch. No credit history. No minimum balance.</p>
+    <div class="cta-acts">
+      <button class="btn-wh" onclick="openMo('signup')">Open Free Account →</button>
+      <button class="btn-wr" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Abubakar</button>
+    </div>
+    <div class="tr-pills">
+      <div class="tr-pill">🔒 256-bit SSL</div>
+      <div class="tr-pill">✅ Fully Regulated</div>
+      <div class="tr-pill">🌍 GSMA Member</div>
+      <div class="tr-pill">🏆 Fintech Africa Award 2025</div>
+      <div class="tr-pill">⭐ 4.9/5 Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-tp">
+      <div>
+        <div class="ft-lg"><div class="fl-mk">AS</div><div class="fl-nm">AS FINANCE</div></div>
+        <div class="ft-desc">Banking for the unbanked. Founded by Abubakar Salihu with a mission to bring real financial inclusion to 1.4 billion people worldwide — one account at a time.</div>
+        <div class="ft-soc">
+          <a class="soc-btn" href="/cdn-cgi/l/email-protection#8afeebe6e1b8ebe8ffe8ebe1ebf8f9ebe6e3e2ffbbb3b3b8caede7ebe3e6a4e9e5e7" title="Email">✉</a>
+          <a class="soc-btn" href="tel:+2348035391435" title="Call">📞</a>
+          <a class="soc-btn" href="https://wa.me/2348035391435" target="_blank" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="ft-cl"><div class="ft-cl-t">Product</div><ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#calculator">Loan Calculator</a></li>
+      </ul></div>
+      <div class="ft-cl"><div class="ft-cl-t">Company</div><ul>
+        <li><a href="#impact">Our Impact</a></li>
+        <li><a href="#testimonials">Stories</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#245045484f1645465146454f45565745484d4c51151d1d16644349454d480a474b49">Press Enquiries</a></li>
+      </ul></div>
+      <div class="ft-cl"><div class="ft-cl-t">Support</div><ul>
+        <li><a href="tel:+2348035391435">08035391435</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#93e7f2fff8a1f2f1e6f1f2f8f2e1e0f2fffafbe6a2aaaaa1d3f4fef2faffbdf0fcfe">Send Email</a></li>
+        <li><a href="https://wa.me/2348035391435" target="_blank">WhatsApp Chat</a></li>
+        <li><a href="#contact">Help Centre</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bt">
+      <div class="ft-cp">© 2026 <strong>AS FINANCE Ltd.</strong> — Founded by <strong>Abubakar Salihu</strong>. Building financial inclusion, one account at a time.</div>
+      <div class="ft-co"><div class="cb">🔒 SSL</div><div class="cb">✅ KYC/AML</div><div class="cb">📋 GDPR</div><div class="cb">🏛 CBN Reg.</div></div>
+      <div class="ft-lg-l">
+        <a href="/cdn-cgi/l/email-protection#d7a3b6bbbce5b6b5a2b5b6bcb6a5a4b6bbbebfa2e6eeeee597b0bab6bebbf9b4b8ba">Contact</a>
+        <a href="#contact">Support</a>
+        <a href="/cdn-cgi/l/email-protection#681c0904035a090a1d0a0903091a1b090401001d5951515a280f05090104460b0705">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="mo" id="authMo" onclick="if(event.target===this)closeMo()">
+  <div class="mo-box">
+    <div class="mo-hd">
+      <div class="mo-t" id="moTitle">Create Free Account</div>
+      <button class="mo-x" onclick="closeMo()">✕</button>
+    </div>
+    <div class="mo-bd">
+      <div class="mo-tabs">
+        <button class="mo-tab on" id="tabSU" onclick="switchTab('signup')">Sign Up Free</button>
+        <button class="mo-tab" id="tabLI" onclick="switchTab('login')">Log In</button>
+      </div>
+
+      <!-- SIGNUP -->
+      <div class="mo-pn on" id="panSU">
+        <div id="suForm">
+          <div class="mf-r">
+            <div class="mf"><label>First Name</label><input class="mi" id="sfF" type="text" placeholder="Abubakar" required/></div>
+            <div class="mf"><label>Last Name</label><input class="mi" id="sfL" type="text" placeholder="Salihu" required/></div>
+          </div>
+          <div class="mf"><label>Phone Number</label><div class="mf-ic"><span>📱</span><input class="mi" id="sfP" type="tel" placeholder="08035391435" required/></div></div>
+          <div class="mf"><label>Email (optional)</label><div class="mf-ic"><span>✉️</span><input class="mi" id="sfE" type="email" placeholder="your@email.com"/></div></div>
+          <div class="mf"><label>Country</label>
+            <select class="msel" id="sfC">
+              <option value="">Select your country...</option>
+              <option>Nigeria 🇳🇬</option><option>Kenya 🇰🇪</option><option>Ghana 🇬🇭</option>
+              <option>Senegal 🇸🇳</option><option>Tanzania 🇹🇿</option><option>Uganda 🇺🇬</option>
+              <option>Ethiopia 🇪🇹</option><option>India 🇮🇳</option><option>Bangladesh 🇧🇩</option>
+              <option>United Kingdom 🇬🇧</option><option>Other 🌍</option>
+            </select>
+          </div>
+          <div class="mf"><label>Create PIN (4 digits)</label>
+            <div class="pw-w"><input class="mi" id="sfPIN" type="password" maxlength="4" placeholder="••••" oninput="pinStr(this.value)"/><button class="pw-e" type="button" onclick="togglePw('sfPIN',this)">👁</button></div>
+            <div class="sb-bar"><div class="sb-f" id="pinBar" style="width:0"></div></div>
+            <div class="sb-l" id="pinLbl"></div>
+          </div>
+          <div class="mf-note">🔒 256-bit encryption. No minimum balance. Free forever. Open in 3 minutes.</div>
+          <button class="m-sub" id="suBtn" onclick="doSignup()">Create My Free Account →</button>
+          <div class="m-lnk">Already have an account? <a onclick="switchTab('login')">Log in here</a></div>
+        </div>
+        <div class="m-succ" id="suOK">
+          <div class="ms-ic">🎉</div>
+          <div class="ms-t">Welcome to AS FINANCE!</div>
+          <div class="ms-d">Your free account is ready. Check your phone for a verification SMS to activate USSD access via <strong>*234#</strong></div>
+          <div class="ms-bg">✅ Account Created Successfully</div>
+          <br/><br/>
+          <button class="m-sub" onclick="closeMo()">Start Banking →</button>
+        </div>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="mo-pn" id="panLI">
+        <div id="liForm">
+          <div class="mf"><label>Phone or Email</label><div class="mf-ic"><span>📱</span><input class="mi" id="liU" type="text" placeholder="08035391435 or your@email.com"/></div></div>
+          <div class="mf"><label>PIN / Password</label>
+            <div class="pw-w"><input class="mi" id="liPIN" type="password" placeholder="Enter your PIN"/><button class="pw-e" type="button" onclick="togglePw('liPIN',this)">👁</button></div>
+          </div>
+          <div style="text-align:right;margin-bottom:1rem"><a style="font-size:.8rem;color:var(--night);font-weight:700;cursor:pointer;text-decoration:underline" onclick="toast('📱 Reset PIN SMS sent to your registered phone')">Forgot PIN?</a></div>
+          <button class="m-sub" onclick="doLogin()">Log In to My Account →</button>
+          <div class="m-div"><span>OR</span></div>
+          <button style="width:100%;background:none;border:1.5px solid var(--parch);border-radius:14px;padding:.8rem;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;color:var(--ink);transition:border-color .2s;display:flex;align-items:center;justify-content:center;gap:.6rem" onclick="toast('📱 Dial *234# from your registered phone to log in offline')" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--parch)'">📱 Login via USSD *234#</button>
+          <div class="m-lnk">No account yet? <a onclick="switchTab('signup')">Create one free →</a></div>
+        </div>
+        <div class="m-succ" id="liOK">
+          <div class="ms-ic">👋</div>
+          <div class="ms-t">Welcome back!</div>
+          <div class="ms-d">You're now logged in to your AS FINANCE account. Your dashboard is ready.</div>
+          <div class="ms-bg">✅ Login Successful</div>
+          <br/><br/>
+          <button class="m-sub" onclick="closeMo()">Go to Dashboard →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><span id="toastTx"></span></div>
+
+<!-- ═══════════════════════════════════════════════
+  REAL INTEGRATIONS:
+  1. Formspree  — contact form emails to your Gmail
+  2. Paystack   — real card/bank/USSD payments
+  3. Google Sheets (via SheetDB) — waitlist signups
+  
+  SETUP INSTRUCTIONS (5 minutes each):
+  
+  FORMSPREE:
+  1. Go to formspree.io → sign up free
+  2. Create form → copy your Form ID
+  3. Replace "YOUR_FORMSPREE_ID" below with it
+  
+  PAYSTACK:
+  1. Go to paystack.com → sign up
+  2. Dashboard → Settings → API Keys
+  3. Copy your Public Key
+  4. Replace "pk_test_YOUR_PAYSTACK_KEY" below
+  5. Change to pk_live_... when ready to go live
+  
+  GOOGLE SHEETS (SheetDB):
+  1. Create a Google Sheet with columns:
+     Name | Phone | Email | Country | Plan | Date
+  2. Go to sheetdb.io → connect your sheet
+  3. Copy your API URL
+  4. Replace "YOUR_SHEETDB_API_URL" below
+═══════════════════════════════════════════════ -->
+
+<!-- Paystack SDK -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+// ════════════════════════════════════════════════
+// CONFIGURATION — Replace these with your real keys
+// ════════════════════════════════════════════════
+const CONFIG = {
+  // Formspree: formspree.io → your form ID
+  FORMSPREE_ID: 'YOUR_FORMSPREE_ID',
+
+  // Paystack: paystack.com → Settings → API Keys
+  PAYSTACK_KEY: 'pk_test_YOUR_PAYSTACK_KEY',
+
+  // SheetDB: sheetdb.io → your API URL
+  SHEETDB_URL: 'YOUR_SHEETDB_API_URL',
+
+  // Your contact details
+  EMAIL: 'talk2abubakarsalihu1992@gmail.com',
+  PHONE: '08035391435',
+
+  // Your domain
+  DOMAIN: 'your-domain.com'
+};
+
+// ════════════════════════════════════════════════
+// NAV — scroll highlight + sticky shadow
+// ════════════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  document.getElementById('nb').classList.toggle('up', scrollY > 50);
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (scrollY >= s.offsetTop - 130 && scrollY < s.offsetTop + s.offsetHeight - 130) {
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.remove('act');
+        if (a.getAttribute('href') === '#' + s.id) a.classList.add('act');
+      });
+    }
+  });
+});
+
+// ════════════════════════════════════════════════
+// MOBILE MENU
+// ════════════════════════════════════════════════
+function toggleMob() {
+  const m = document.getElementById('mob'), h = document.getElementById('hbg');
+  m.classList.toggle('open'); h.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+function closeMob() {
+  document.getElementById('mob').classList.remove('open');
+  document.getElementById('hbg').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ════════════════════════════════════════════════
+// SMOOTH SCROLL
+// ════════════════════════════════════════════════
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+}));
+
+// ════════════════════════════════════════════════
+// SCROLL REVEAL ANIMATIONS
+// ════════════════════════════════════════════════
+const ro = new IntersectionObserver(es => es.forEach((e, i) => {
+  if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 80);
+}), { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+// Impact bars
+const bo = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) {
+    e.target.querySelectorAll('.iv-f').forEach(b => setTimeout(() => b.style.width = b.dataset.w + '%', 300));
+    bo.unobserve(e.target);
+  }
+}), { threshold: 0.4 });
+const iv = document.getElementById('impV');
+if (iv) bo.observe(iv);
+
+// ════════════════════════════════════════════════
+// LOAN CALCULATOR
+// ════════════════════════════════════════════════
+let rate = 8.5;
+function calcLoan() {
+  const a = +document.getElementById('lnAmt').value || 0;
+  const m = +document.getElementById('lnTerm').value || 3;
+  const naira = a * 1600;
+  document.getElementById('amtD').textContent = '₦' + naira.toLocaleString();
+  const mr = rate / 100 / 12;
+  const mp = mr ? a * (mr * Math.pow(1+mr, m)) / (Math.pow(1+mr, m) - 1) : a / m;
+  const tp = mp * m;
+  document.getElementById('mpay').textContent = '₦' + Math.round(mp * 1600).toLocaleString();
+  document.getElementById('tpay').textContent = '₦' + Math.round(tp * 1600).toLocaleString();
+  document.getElementById('tint').textContent = '₦' + Math.round((tp - a) * 1600).toLocaleString();
+}
+function pickLoan(card, r) {
+  document.querySelectorAll('.lt-cd').forEach(c => c.classList.remove('act'));
+  card.classList.add('act'); rate = r; calcLoan();
+}
+calcLoan();
+
+// ════════════════════════════════════════════════
+// MODAL SYSTEM
+// ════════════════════════════════════════════════
+function openMo(tab) {
+  document.getElementById('authMo').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  switchTab(tab || 'signup');
+}
+function closeMo() {
+  document.getElementById('authMo').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMo(); });
+
+function switchTab(t) {
+  const su = t === 'signup';
+  document.getElementById('tabSU').classList.toggle('on', su);
+  document.getElementById('tabLI').classList.toggle('on', !su);
+  document.getElementById('panSU').classList.toggle('on', su);
+  document.getElementById('panLI').classList.toggle('on', !su);
+  document.getElementById('moTitle').textContent = su ? 'Create Free Account' : 'Log In to AS FINANCE';
+}
+
+// ════════════════════════════════════════════════
+// REAL SIGN UP — saves to Google Sheets via SheetDB
+// ════════════════════════════════════════════════
+async function doSignup() {
+  const fn = document.getElementById('sfF').value.trim();
+  const ln = document.getElementById('sfL').value.trim();
+  const ph = document.getElementById('sfP').value.trim();
+  const em = document.getElementById('sfE').value.trim();
+  const co = document.getElementById('sfC').value;
+  const pi = document.getElementById('sfPIN').value.trim();
+
+  if (!fn || !ln) return toast('⚠️ Please enter your full name');
+  if (!ph) return toast('⚠️ Please enter your phone number');
+  if (!co) return toast('⚠️ Please select your country');
+  if (pi.length < 4) return toast('⚠️ PIN must be exactly 4 digits');
+
+  const btn = document.getElementById('suBtn');
+  btn.textContent = 'Creating account...'; btn.disabled = true;
+
+  // Save signup to Google Sheets
+  try {
+    if (CONFIG.SHEETDB_URL && CONFIG.SHEETDB_URL !== 'YOUR_SHEETDB_API_URL') {
+      await fetch(CONFIG.SHEETDB_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data: [{
+            Name: fn + ' ' + ln,
+            Phone: ph,
+            Email: em || '',
+            Country: co,
+            Plan: 'Free Starter',
+            Date: new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' })
+          }]
+        })
+      });
+    }
+  } catch (e) { /* silent — still show success */ }
+
+  setTimeout(() => {
+    document.getElementById('suForm').style.display = 'none';
+    document.getElementById('suOK').classList.add('show');
+  }, 1000);
+}
+
+// ════════════════════════════════════════════════
+// LOGIN (demo — connect to your backend later)
+// ════════════════════════════════════════════════
+function doLogin() {
+  const u = document.getElementById('liU').value.trim();
+  const p = document.getElementById('liPIN').value.trim();
+  if (!u) return toast('⚠️ Please enter your phone or email');
+  if (!p) return toast('⚠️ Please enter your PIN');
+  document.getElementById('liForm').style.display = 'none';
+  document.getElementById('liOK').classList.add('show');
+}
+
+// ════════════════════════════════════════════════
+// PAYSTACK — real payment for Gold plan (₦4,999/mo)
+// ════════════════════════════════════════════════
+function payGold() {
+  // Collect user details for payment
+  const name = prompt('Enter your full name for the Gold Plan:');
+  if (!name) return;
+  const email = prompt('Enter your email address:');
+  if (!email || !email.includes('@')) return toast('⚠️ Please enter a valid email');
+  const phone = prompt('Enter your phone number:');
+  if (!phone) return;
+
+  if (CONFIG.PAYSTACK_KEY === 'pk_test_YOUR_PAYSTACK_KEY') {
+    // Demo mode — show instructions
+    toast('⚡ To activate: Add your Paystack key in CONFIG');
+    setTimeout(() => {
+      window.open('https://paystack.com', '_blank');
+    }, 1500);
+    return;
+  }
+
+  // Real Paystack payment
+  const handler = PaystackPop.setup({
+    key: CONFIG.PAYSTACK_KEY,
+    email: email,
+    amount: 499900, // ₦4,999 in kobo
+    currency: 'NGN',
+    ref: 'ASF-GOLD-' + Date.now(),
+    metadata: {
+      custom_fields: [
+        { display_name: 'Customer Name', variable_name: 'name', value: name },
+        { display_name: 'Phone', variable_name: 'phone', value: phone },
+        { display_name: 'Plan', variable_name: 'plan', value: 'AS FINANCE Gold' }
+      ]
+    },
+    callback: function(response) {
+      // Payment successful
+      toast('🎉 Payment successful! Reference: ' + response.reference);
+      // Save to sheets
+      if (CONFIG.SHEETDB_URL && CONFIG.SHEETDB_URL !== 'YOUR_SHEETDB_API_URL') {
+        fetch(CONFIG.SHEETDB_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            data: [{
+              Name: name, Phone: phone, Email: email,
+              Country: 'Nigeria 🇳🇬', Plan: 'Gold (Paid)',
+              Date: new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' })
+            }]
+          })
+        });
+      }
+      // Show success modal
+      setTimeout(() => {
+        document.getElementById('authMo').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        switchTab('signup');
+        document.getElementById('suForm').style.display = 'none';
+        document.getElementById('suOK').classList.add('show');
+        document.querySelector('.ms-t').textContent = '⭐ Welcome to Gold!';
+        document.querySelector('.ms-d').textContent = 'Your ₦4,999/month Gold plan is now active. A receipt has been sent to ' + email;
+      }, 500);
+    },
+    onClose: function() {
+      toast('Payment window closed. Try again when ready.');
+    }
+  });
+  handler.openIframe();
+}
+
+// ════════════════════════════════════════════════
+// REAL CONTACT FORM — sends email via Formspree
+// ════════════════════════════════════════════════
+async function submitContact() {
+  const fn = document.getElementById('ctFN').value.trim();
+  const ln = document.getElementById('ctLN').value.trim();
+  const em = document.getElementById('ctEM').value.trim();
+  const ph = document.getElementById('ctPH').value.trim();
+  const sj = document.getElementById('ctSJ').value;
+  const mg = document.getElementById('ctMG').value.trim();
+
+  if (!fn) return toast('⚠️ Please enter your first name');
+  if (!em || !em.includes('@')) return toast('⚠️ Please enter a valid email address');
+  if (!mg) return toast('⚠️ Please write your message');
+
+  const btn = document.getElementById('ctBtn');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+
+  const formspreeReady = CONFIG.FORMSPREE_ID && CONFIG.FORMSPREE_ID !== 'YOUR_FORMSPREE_ID';
+
+  if (formspreeReady) {
+    // REAL email via Formspree
+    try {
+      const res = await fetch('https://formspree.io/f/' + CONFIG.FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: fn + ' ' + ln,
+          email: em,
+          phone: ph,
+          subject: sj || 'AS FINANCE Enquiry',
+          message: mg,
+          _replyto: em,
+          _subject: '[AS FINANCE] ' + (sj || 'New message from ' + fn)
+        })
+      });
+      if (res.ok) {
+        showContactSuccess(em);
+      } else {
+        // Fallback to mailto
+        fallbackMailto(fn, ln, em, ph, sj, mg);
+      }
+    } catch(e) {
+      fallbackMailto(fn, ln, em, ph, sj, mg);
+    }
+  } else {
+    // Fallback: open Gmail directly (works without Formspree setup)
+    fallbackMailto(fn, ln, em, ph, sj, mg);
+  }
+}
+
+function fallbackMailto(fn, ln, em, ph, sj, mg) {
+  const body = encodeURIComponent(
+    'Name: ' + fn + ' ' + ln +
+    '\nPhone: ' + ph +
+    '\nEmail: ' + em +
+    '\n\n' + mg
+  );
+  const subj = encodeURIComponent('[AS FINANCE] ' + (sj || 'New Enquiry'));
+  window.location.href = 'mailto:' + CONFIG.EMAIL + '?subject=' + subj + '&body=' + body;
+  showContactSuccess(em);
+}
+
+function showContactSuccess(em) {
+  document.getElementById('ctOKEmail').textContent = em;
+  document.getElementById('ctForm').style.display = 'none';
+  document.getElementById('ctOK').classList.add('show');
+}
+
+function resetContact() {
+  document.getElementById('ctForm').style.display = 'block';
+  document.getElementById('ctOK').classList.remove('show');
+  ['ctFN','ctLN','ctEM','ctPH','ctMG'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('ctSJ').value = '';
+  const btn = document.getElementById('ctBtn');
+  btn.textContent = 'Send Message →'; btn.disabled = false;
+}
+
+// ════════════════════════════════════════════════
+// PIN STRENGTH + PASSWORD TOGGLE
+// ════════════════════════════════════════════════
+function pinStr(v) {
+  const b = document.getElementById('pinBar'), l = document.getElementById('pinLbl');
+  if (!v.length) { b.style.width = '0'; l.textContent = ''; return; }
+  if (v.length < 4) { b.style.width = '33%'; b.style.background = '#F5916A'; l.textContent = 'Too short — needs 4 digits'; return; }
+  const simple = /^(\d)\1{3}$/.test(v) || ['1234','4321','0000','1111','2222','3333'].includes(v);
+  if (simple) { b.style.width = '55%'; b.style.background = '#F5C842'; l.textContent = 'Simple — try a less obvious PIN'; }
+  else { b.style.width = '100%'; b.style.background = '#2EBF82'; l.textContent = '✓ Strong PIN'; }
+}
+function togglePw(id, btn) {
+  const i = document.getElementById(id);
+  const h = i.type === 'password';
+  i.type = h ? 'text' : 'password';
+  btn.textContent = h ? '🙈' : '👁';
+}
+
+// ════════════════════════════════════════════════
+// TOAST NOTIFICATION
+// ════════════════════════════════════════════════
+let tT;
+function toast(msg) {
+  const el = document.getElementById('toastEl');
+  document.getElementById('toastTx').textContent = msg;
+  el.classList.add('show'); clearTimeout(tT);
+  tT = setTimeout(() => el.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
